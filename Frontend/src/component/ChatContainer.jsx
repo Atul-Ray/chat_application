@@ -25,7 +25,7 @@ useEffect(() => {
 if(isMessageLoading) return <div>Loading....</div>
 
   return (
-    <div className='flex flex-1 flex-col overflow-auto'>
+    <div className='flex flex-1 flex-col overflow-auto max-[500px]:hidden'>
       <ChatHeader/>
    <div className='flex-1 p-4 overflow-y-auto space-y-4'>
 
@@ -34,9 +34,12 @@ if(isMessageLoading) return <div>Loading....</div>
     <div
     key={message._id}
     className={`chat ${message.senderId === authUser._id?"chat-end":"chat-start"}`}
+    
     >
 {
-  message.text&&<p>{message.text}</p>
+  message.text&&<p
+  className='chat-bubble'
+  >{message.text}</p>
 }
 
 {

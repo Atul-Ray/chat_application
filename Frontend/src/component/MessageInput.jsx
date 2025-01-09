@@ -25,6 +25,7 @@ if (fileInputRef.current) fileInputRef.current.value = "";
 
  const handleSendMessage = async (e) => {
   e.preventDefault();
+
   if (!text.trim() && !imagePrev) return;
 
   try {
@@ -39,6 +40,12 @@ if (fileInputRef.current) fileInputRef.current.value = "";
     if (fileInputRef.current) fileInputRef.current.value = "";
   } catch (error) {
     console.error("Failed to send message:", error);
+  }
+};
+const handleKeyPress = (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    handleSendMessage(e);
   }
 };
 
@@ -74,20 +81,24 @@ if (fileInputRef.current) fileInputRef.current.value = "";
          type='text'
          placeholder='Type a message...'
          value={text}
+         onKeyDown={handleKeyPress}
          onInput={(e)=>setText(e.target.value)}
          className='w-full rounded-lg border input input-bordered input-sm  p-1'
          />
         
      </div>
        
-       <input
+      <div>
+      <input
           type='file'
           className='hidden'
           ref={fileInputRef}
+          
           onChange={handleImgChange}
           >
           </input>
             
+      </div>
      <button
     
      onClick={()=>fileInputRef.current?.click()}

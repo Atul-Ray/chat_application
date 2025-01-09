@@ -18,11 +18,11 @@ function Sidebar() {
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
-    <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
+    <aside className="h-full w-20 min-w-48 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200 max-[500px]:w-full">
      <div className="border-b  border-base-300 w-full p-5 ">
       <div className="flex items-center gap-2">
  <User className="size-6"/>
- <span className="font-medium hidden lg:block">contact</span>
+ <span className="font-medium hidden  lg:block">contact</span>
       </div>
       {/* {} */}
 
@@ -39,7 +39,7 @@ function Sidebar() {
       ${selectedUser?._id===user._id?"base-bg-300 ring-1 ring-base-300":""}
       `}
     >
-    <div className="relative mx-auto lg:mx-0">
+    <div className="relative  lg:mx-0">
 <img
 src={user.profilePic || bgr}
 className="size-12 object-cover rounded-full"
@@ -53,8 +53,8 @@ className="size-12 object-cover rounded-full"
     />
  )}
  </div>
- <div className="hidden lg:block text-left min-w-0">
-  <div className="font-medium truncate">{user.fullName}</div>
+ <div className="  text-left min-w-0">
+  <div className=" font-medium truncate">{user.fullName}</div>
   <div className="text-sm text-zinc-400">
 {  onlineUsers.includes(user._id)?"online":"offline"}
   </div>
